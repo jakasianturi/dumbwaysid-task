@@ -218,10 +218,12 @@ body {
 	gap: 0.875rem;
 	width: 100%;
 	max-width: 260px;
+	cursor: pointer;
 }
 .input-checkbox label {
 	font-weight: 400;
 	margin-bottom: 0;
+	cursor: pointer;
 }
 .form-control .checkbox-wrap {
 	display: flex;
@@ -239,6 +241,7 @@ body {
 	display: block;
 	width: 100%;
 	font-family: inherit;
+	cursor: pointer;
 }
 .icon {
 	display: flex;
