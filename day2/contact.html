@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Hi! I'am Jaka Sianturi</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			rel="shortcut icon"
+			href="jakasianturi.jpeg"
+			type="image/x-icon"
+		/>
+		<link rel="stylesheet" href="./assets/css/style.css" />
+	</head>
+	<body>
+		<!-- Navbar -->
+		<header class="header">
+			<nav class="container navbar">
+				<a class="img-brand" href="#!">
+					<img
+						src="./assets/img/dumbwaysid.png"
+						alt="Logo"
+						width="50"
+					/>
+				</a>
+				<ul class="nav-menu">
+					<li>
+						<a href="./index.html" class="menu-item">Home</a>
+					</li>
+					<li><a href="#!" class="menu-item">My Project</a></li>
+				</ul>
+				<a class="btn btn-contact" href="#!">Contact Me</a>
+			</nav>
+		</header>
+		<!-- Content -->
+		<main class="container">
+			<div class="wrap-contact">
+				<h1 class="contact-heading">Get In Touch</h1>
+				<form class="contact-form" action="#!" method="post">
+					<div class="form-control">
+						<label for="name">Name</label>
+						<input type="text" name="name" id="name" />
+					</div>
+					<div class="form-control">
+						<label for="email">Email</label>
+						<input type="email" name="email" id="email" />
+					</div>
+					<div class="form-control">
+						<label for="phone_number">Phone Number</label>
+						<input
+							type="text"
+							name="phone_number"
+							id="phone_number"
+						/>
+					</div>
+					<div class="form-control">
+						<label for="subject">Subject</label>
+						<select name="subject" id="subject">
+							<option>- Choose -</option>
+							<option value="message">Message</option>
+							<option value="another">Another</option>
+						</select>
+					</div>
+					<div class="form-control">
+						<label for="message">Your Message</label>
+						<textarea
+							name="message"
+							id="message"
+							rows="8"
+						></textarea>
+					</div>
+					<input class="btn btnSubmit" type="button" value="Submit" />
+				</form>
+			</div>
+		</main>
+		<!-- Btn Back to Home -->
+		<a class="btn__home" href="../index.html" title="Back to Home">
+			<div class="btn__icon">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width="24px"
+					height="24px"
+					preserveAspectRatio="xMidYMid meet"
+					viewBox="0 0 24 24"
+				>
+					<g
+						fill="none"
+						stroke="currentColor"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+					>
+						<path
+							d="M21 19v-6.733a4 4 0 0 0-1.245-2.9L13.378 3.31a2 2 0 0 0-2.755 0L4.245 9.367A4 4 0 0 0 3 12.267V19a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2Z"
+						/>
+						<path d="M9 15a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v6H9v-6Z" />
+					</g>
+				</svg>
+			</div>
+		</a>
+		<style>
+			.btn__home {
+				position: fixed;
+				bottom: 80px;
+				right: 22px;
+				width: 40px;
+				height: 40px;
+				z-index: 10;
+				background-color: #121212;
+				padding: 8px;
+				border-radius: 50rem;
+				box-shadow: 4px 6px 0.25rem rgb(0 0 0 / 25%);
+			}
+			.btn__icon {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				color: #ffffff;
+			}
+		</style>
+	</body>
+</html>
