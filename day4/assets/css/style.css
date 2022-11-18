@@ -316,8 +316,15 @@ body {
 	border-radius: 0.5rem;
 }
 .list-item .title {
-	font-weight: 700;
+	margin: 0;
 	margin: 0.25rem 0;
+}
+.list-item .title a {
+	text-decoration: none;
+	color: inherit;
+}
+.list-item .title a:hover {
+	color: rgb(41, 37, 255);
 }
 .list-item .duration {
 	color: #666666;
@@ -331,8 +338,6 @@ body {
 	display: flex;
 	gap: 1rem;
 	align-items: center;
-	width: 24px;
-	height: 24px;
 	margin-bottom: 1rem;
 }
 .list-item .technologies .icon-list {
@@ -361,6 +366,66 @@ body {
 	color: #ffffff;
 	padding: 0.25rem 2.5rem;
 	font-size: 14px;
+}
+/* Project Detail */
+.project-detail .heading {
+	text-align: center;
+}
+.project-detail .project-header {
+	margin-bottom: 2rem;
+}
+.project-detail .thumbnail {
+	width: 100%;
+	height: 300px;
+}
+.project-detail .thumbnail img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 0.5rem;
+}
+.project-detail .meta {
+	padding: 0.5rem 1rem;
+}
+.project-detail .meta .duration h3 {
+	margin: 0;
+	margin-bottom: 0.5rem;
+}
+.project-detail .meta .duration p {
+	margin: 0;
+	margin-bottom: 0.25rem;
+	font-size: 14px;
+}
+.project-detail .meta .icon {
+	display: inline-block;
+	vertical-align: middle;
+	color: #333333;
+	margin-right: 0.5rem;
+}
+.list-tech {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
+.list-tech .list-tech-item {
+	width: 100%;
+	max-width: 180px;
+}
+.list-tech .list-tech-item img {
+	display: inline-block;
+	vertical-align: middle;
+	color: #333333;
+	margin-right: 0.5rem;
+	width: 24px;
+	height: 24px;
+}
+.project-description {
+	text-align: justify;
+}
+p {
+	margin: 0;
+	margin-bottom: 0.5rem;
 }
 /* Bootstrap Container CSS */
 .container,

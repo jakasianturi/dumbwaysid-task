@@ -1,15 +1,44 @@
+// For Contact Form
+function submitData() {
+	let name = document.getElementById("name").value;
+	let email = document.getElementById("email").value;
+	let phone_number = document.getElementById("phone_number").value;
+	let subject = document.getElementById("subject").value;
+	let message = document.getElementById("message").value;
+
+	console.log(name, email, phone_number, subject, message);
+
+	let link = document.createElement("a");
+	link.href = `mailto:${email}?subject=${subject}&body=Halo nama saya ${name}, pesan saya ${message}, silahkan kontak nomor saya di ${phone_number}. Terimakasih.`;
+	link.click();
+}
+
+// For My Project
 let data = [];
 
 function addData(event) {
 	event.preventDefault();
 	let project_name = document.getElementById("project_name").value;
 	let description = document.getElementById("description").value;
+	let image_input = document.getElementById("image").files;
+
+	// Validation
+	if (project_name == "") {
+		return alert("Project Name tidak boleh kosong!");
+	} else if (description == "") {
+		return alert("Description tidak boleh kosong!");
+	} else if (image_input.length == 0) {
+		return alert("Image tidak boleh kosong!");
+	}
+
+	// Image
+	image = URL.createObjectURL(image_input[0]);
 
 	// For Checkbox
 	// Reff: https://www.geeksforgeeks.org/how-to-get-all-checked-values-of-checkbox-in-javascript/
+	let technologies = [];
 	let technologies_input =
 		document.getElementsByClassName("technologies_input");
-	let technologies = [];
 	for (let i = 0; i < technologies_input.length; i++) {
 		if (technologies_input[i].checked) {
 			// Hahaha.. Entahlah ini gimana logikanya
@@ -21,11 +50,6 @@ function addData(event) {
 	}
 	// console.log(technologies);
 
-	// Image
-	let image_input = document.getElementById("image").files;
-	if (image_input.length > 0) {
-		image = URL.createObjectURL(image_input[0]);
-	}
 	let project_item = {
 		image,
 		project_name,
@@ -50,7 +74,8 @@ function renderProject() {
 									class="image"
 								/>
 							</div>
-							<h3 class="title">${data[i].project_name}</h3>
+							<h3 class="title"><a href="./project-detail.html">${data[i].project_name}</a>
+							</h3>
 							<span class="duration">Duration: 3 Month</span>
 							<p class="description">${data[i].description}</p>
 							<div class="technologies">
