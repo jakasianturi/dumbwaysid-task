@@ -2,7 +2,7 @@
 *::after,
 *::before {
 	box-sizing: border-box;
-	transition: 0.5s all;
+	transition: 0.5ms all;
 }
 body {
 	margin: 0;
@@ -32,6 +32,7 @@ body {
 .navbar .nav-menu {
 	list-style-type: none;
 	display: flex;
+	padding: 0.25rem 0.5rem;
 }
 .navbar .nav-menu .menu-item {
 	text-decoration: none;
@@ -156,6 +157,26 @@ body {
 	}
 	.wrap-content {
 		padding: 20px;
+	}
+}
+@media (max-width: 576px) {
+	.navbar .img-brand img {
+		width: 40px;
+	}
+
+	.navbar .nav-menu .menu-item {
+		font-size: 14px;
+	}
+	.navbar .btn-contact {
+		font-size: 14px;
+		padding: 0.25rem 0.875rem;
+	}
+	.btn-wrap .btn-contact {
+		font-size: 14px;
+		padding: 0.25rem 0.875rem;
+	}
+	body {
+		font-size: 14px;
 	}
 }
 .wrap-contact {
