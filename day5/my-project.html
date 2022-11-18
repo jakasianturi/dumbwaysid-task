@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Hi! I'am Jaka Sianturi</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			rel="shortcut icon"
+			href="./assets/img/jakasianturi.jpeg"
+			type="image/x-icon"
+		/>
+		<link rel="stylesheet" href="./assets/css/style.css" />
+	</head>
+	<body>
+		<!-- Navbar -->
+		<header class="header">
+			<nav class="container navbar">
+				<a class="img-brand" href="#!">
+					<img
+						src="./assets/img/dumbwaysid.png"
+						alt="Logo"
+						width="50"
+					/>
+				</a>
+				<ul class="nav-menu">
+					<li>
+						<a href="./index.html" class="menu-item">Home</a>
+					</li>
+					<li>
+						<a href="./my-project.html" class="menu-item active"
+							>My Project</a
+						>
+					</li>
+				</ul>
+				<a class="btn btn-contact" href="./contact.html">Contact Me</a>
+			</nav>
+		</header>
+		<!-- Content -->
+		<main>
+			<div class="container">
+				<div class="wrap-contact">
+					<h1 class="contact-heading">Add My Project</h1>
+					<form onsubmit="addData(event);" class="contact-form">
+						<div class="form-control">
+							<label for="project_name">Project Name</label>
+							<input
+								type="text"
+								name="project_name"
+								id="project_name"
+							/>
+						</div>
+						<div class="form-control form_date">
+							<div class="col-6">
+								<label for="start_date">Start Date</label>
+								<input
+									type="date"
+									name="start_date"
+									id="start_date"
+								/>
+							</div>
+							<div class="col-6">
+								<label for="end_date">End Date</label>
+								<input
+									type="date"
+									name="end_date"
+									id="end_date"
+								/>
+							</div>
+						</div>
+						<div class="form-control">
+							<label for="technologies">Technologies</label>
+							<div class="checkbox-wrap">
+								<div class="input-checkbox">
+									<input
+										class="technologies_input"
+										type="checkbox"
+										id="nodejs"
+										name="nodejs"
+										value="nodejs"
+									/>
+									<label for="nodejs">Node Js</label>
+								</div>
+								<div class="input-checkbox">
+									<input
+										class="technologies_input"
+										type="checkbox"
+										id="reactjs"
+										name="reactjs"
+										value="reactjs"
+									/>
+									<label for="reactjs">React Js</label>
+								</div>
+								<div class="input-checkbox">
+									<input
+										class="technologies_input"
+										type="checkbox"
+										id="nextjs"
+										name="nextjs"
+										value="nextjs"
+									/>
+									<label for="nextjs">Next Js</label>
+								</div>
+								<div class="input-checkbox">
+									<input
+										class="technologies_input"
+										type="checkbox"
+										id="vuejs"
+										name="vuejs"
+										value="vuejs"
+									/>
+									<label for="vuejs">Vue Js</label>
+								</div>
+							</div>
+						</div>
+						<div class="form-control">
+							<label for="description">Description</label>
+							<textarea
+								name="description"
+								id="description"
+								rows="8"
+							></textarea>
+						</div>
+						<div class="form-control">
+							<label for="image">Upload Image</label>
+							<div class="file-upload">
+								<input
+									class="image-upload"
+									type="file"
+									name="image"
+									id="image"
+								/>
+								<span class="icon">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="20px"
+										height="20px"
+										preserveAspectRatio="xMidYMid meet"
+										viewBox="0 0 24 24"
+									>
+										<path
+											fill="currentColor"
+											d="M11.5 22q-2.3 0-3.9-1.6T6 16.5V6q0-1.65 1.175-2.825Q8.35 2 10 2q1.65 0 2.825 1.175Q14 4.35 14 6v9.5q0 1.05-.725 1.775Q12.55 18 11.5 18q-1.05 0-1.775-.725Q9 16.55 9 15.5V6h1.5v9.5q0 .425.288.712q.287.288.712.288t.713-.288q.287-.287.287-.712V6q0-1.05-.725-1.775Q11.05 3.5 10 3.5q-1.05 0-1.775.725Q7.5 4.95 7.5 6v10.5q0 1.65 1.175 2.825Q9.85 20.5 11.5 20.5q1.65 0 2.825-1.175Q15.5 18.15 15.5 16.5V6H17v10.5q0 2.3-1.6 3.9T11.5 22Z"
+										/></svg
+								></span>
+							</div>
+						</div>
+						<button type="submit" class="btn btnSubmit">
+							Submit
+						</button>
+					</form>
+				</div>
+			</div>
+			<div class="project-list">
+				<div class="container">
+					<h1 class="project-heading">My Project</h1>
+					<div class="wrap-list-item" id="project_list"></div>
+				</div>
+			</div>
+		</main>
+		<!-- Btn Back to Home -->
+		<a class="btn__home" href="../index.html" title="Back to Home">
+			<div class="btn__icon">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					width="24px"
+					height="24px"
+					preserveAspectRatio="xMidYMid meet"
+					viewBox="0 0 24 24"
+				>
+					<g
+						fill="none"
+						stroke="currentColor"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+					>
+						<path
+							d="M21 19v-6.733a4 4 0 0 0-1.245-2.9L13.378 3.31a2 2 0 0 0-2.755 0L4.245 9.367A4 4 0 0 0 3 12.267V19a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2Z"
+						/>
+						<path d="M9 15a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v6H9v-6Z" />
+					</g>
+				</svg>
+			</div>
+		</a>
+		<style>
+			.btn__home {
+				position: fixed;
+				bottom: 80px;
+				right: 22px;
+				width: 40px;
+				height: 40px;
+				z-index: 10;
+				background-color: #121212;
+				padding: 8px;
+				border-radius: 50rem;
+				box-shadow: 4px 6px 0.25rem rgb(0 0 0 / 25%);
+			}
+			.btn__icon {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				color: #ffffff;
+			}
+		</style>
+		<script src="./assets/js/app.js"></script>
+	</body>
+</html>
