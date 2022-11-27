@@ -1,6 +1,6 @@
 body {
-	font-family: "Poppins", sans-serif;
-	color: #333333;
+	font-family: "Poppins", sans-serif !important;
+	color: #333333 !important;
 }
 h1,
 h2,
@@ -39,6 +39,9 @@ label.form-label {
 }
 .fs-sm {
 	font-size: 0.875rem;
+}
+.fs-xs {
+	font-size: 0.75rem;
 }
 .overflow-hidden {
 	overflow: hidden;
