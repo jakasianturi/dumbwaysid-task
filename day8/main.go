@@ -101,6 +101,7 @@ func createProject(w http.ResponseWriter, r *http.Request) {
 func storeProject(w http.ResponseWriter, r *http.Request) {
 	// left shift 32 << 20 which results in 32*2^20 = 33554432
 	// x << y, results in x*2^y
+	// err := r.ParseForm() // text
 	err := r.ParseMultipartForm(32 << 20)
 
 	if err != nil {
@@ -108,7 +109,7 @@ func storeProject(w http.ResponseWriter, r *http.Request) {
 	}
 
 	project_name := r.PostForm.Get("project_name")
-	technologies := r.Form["technologies"]
+	technologies := r.Form["technologies"] // return array
 	description := r.PostForm.Get("description")
 
 	// Image
@@ -119,7 +120,7 @@ func storeProject(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	defer uploadedFile.Close()
-	fileLocation := "public/uploads/"
+	fileLocation := "public/uploads/" // path image
 	imageName := slug.Make(project_name)
 	_ = os.MkdirAll(fileLocation, os.ModePerm)
 	fullPath := fileLocation + imageName + filepath.Ext(handler.Filename)
@@ -141,26 +142,35 @@ func storeProject(w http.ResponseWriter, r *http.Request) {
 
 	// Duration
 	// Date
-	startDate := r.PostForm.Get("start_date")
+	startDate := r.PostForm.Get("start_date") // 2022-11-29
 	endDate := r.PostForm.Get("end_date")
+
+	// Ubah jadi time
 	const (
 		layoutISO = "2006-01-02"
 	)
 	tStartDate, _ := time.Parse(layoutISO, startDate)
 	tEndDate, _ := time.Parse(layoutISO, endDate)
-	diff := tEndDate.Sub(tStartDate)
 
-	months := int64(diff.Hours() / 24 / 30)
-	days := int64(diff.Hours() / 24)
+	// Hitung perbedaan
+	// Hasil yg didapat adalah millisecond
+	diff := tEndDate.Sub(tStartDate) // 1000ms
 
+	// Ubah millisecond menjadi bulan dan hari
+	months := int64(diff.Hours() / 24 / 30) // 123
+	days := int64(diff.Hours() / 24)        // 64
+
+	// Jika hari lebih dari 30, maka hitung sisa hari
+	// Ex: 32 hari, lebih dari 30 (2) = 2 hari.
 	if days%30 >= 0 {
-		days = days % 30
+		days = days % 30 // 64 % 30 = 4 hari
 	}
 
+	// Durasi waktu berbentuk kalimat (string)
 	var duration string
 
 	if months >= 1 && days >= 1 {
-		duration = strconv.FormatInt(months, 10) + " month " + strconv.FormatInt(days, 10) + " days"
+		duration = strconv.FormatInt(months, 10) + " month " + strconv.FormatInt(days, 10) + " days" // 1 month 2 days
 	} else if months >= 1 && days <= 0 {
 		duration = strconv.FormatInt(months, 10) + " month"
 	} else if months < 1 && days >= 0 {
