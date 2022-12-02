@@ -62,11 +62,6 @@
 								>
 							</li>
 							{{end}}
-							<li class="nav-item d-flex align-items-center">
-								<a href="/contact" class="btn btn-sm btn-dark"
-									>Contact Me</a
-								>
-							</li>
 						</ul>
 						<ul class="navbar-nav ms-auto">
 							{{if .Data.IsLogin }}
@@ -78,7 +73,7 @@
 							</li>
 							<li class="nav-item d-flex align-items-center">
 								<a
-									class="btn btn-sm px-3 btn-danger"
+									class="btn btn-sm px-3 btn-dark"
 									href="/logout"
 									>Logout</a
 								>
@@ -87,20 +82,25 @@
 							<div class="d-flex gap-3 py-md-0 py-2">
 								<li class="nav-item">
 									<a
-										class="btn btn-sm px-3 btn-success"
+										class="nav-link"
 										href="/register"
 										>Register</a
 									>
 								</li>
 								<li class="nav-item">
 									<a
-										class="btn btn-sm px-3 btn-primary"
+										class="nav-link"
 										href="/login"
 										>Login</a
 									>
 								</li>
 							</div>
 							{{ end }}
+							<li class="nav-item d-flex align-items-center ms-0 ms-lg-3  mt-2 mt-lg-0">
+								<a href="/contact" class="btn btn-sm btn-dark"
+									>Contact Me</a
+								>
+							</li>
 						</ul>
 					</div>
 				</div>
@@ -112,15 +112,15 @@
 			<div class="container py-5">
 				{{ if .Data.FlashData}}
 				<div class="alert alert-success" role="alert">
-					{{.Data.FlashData}} - Welcome to Project Page.
+					<strong>{{.Data.FlashData}}</strong> <br> Welcome to Project Page.
 				</div>
 				{{ end }}
-				<div class="bg-white rounded-3 shadow-lg p-3 p-lg-5">
+				<div class="bg-light rounded-3 shadow-lg p-3 p-lg-5">
 					<div class="row">
 						<div class="col-md-8 mb-3 mb-md-0">
 							<h1>Hi, Welcome to My Profile Page</h1>
 							<p class="text-justify">
-								I'am is Human. My name is
+								I'am Human. My name is
 								<strong>Jaka Sianturi</strong>. I'am newbie
 								programmer. For long content I just ketik: Lorem
 								ipsum dolor sit amet consectetur adipisicing
@@ -223,9 +223,9 @@
 							</div>
 						</div>
 						<div class="col-md-4">
-							<div class="rounded-3 shadow-sm overflow-hidden">
+							<div class="bg-white rounded-3 shadow-sm overflow-hidden">
 								<img
-									src="/public/img/jakasianturi.jpeg"
+									src="/public/img/jakasianturi.jpg"
 									alt="Jaka Sianturi"
 									title="Jaka Sianturi"
 									class="mw-100" />
@@ -239,75 +239,77 @@
 				</div>
 			</div>
 			<!-- Project List -->
-			<div class="container py-5">
-				<h2 class="text-center mb-5">My Project</h2>
-				<div class="row">
-					{{ if .Projects }} {{ range $index, $data := .Projects }}
-					<div class="col-sm-4 col-lg-3 mb-3">
-						<div class="card border-0 shadow-sm">
-							<img
-								src="{{ $data.Image }}"
-								class="card-img-top"
-								alt="images" />
-							<div class="card-body">
-								<a
-									class="text-decoration-none text-dark"
-									href="/detail/{{ $data.ID }}">
-									<h6 class="card-title">
-										{{ $data.ProjectName }}
-									</h6>
-								</a>
-								<span class="fs-xs">
-									Duration: {{ $data.Duration }}
-								</span>
-								<p class="card-text fs-sm">
-									{{ $data.Description }}
-								</p>
-								<div class="mb-3 d-flex gap-3">
-									{{ range $index, $data := $data.Technologies
-									}}
-									<span class="icon">
-										<img
-											src="/public/img/{{ $data }}.svg"
-											alt="Icon"
-											width="20"
-											height="20" />
+			<div class="bg-white">
+				<div class="container py-5">
+					<h2 class="text-center mb-5">My Project</h2>
+					<div class="row">
+						{{ if .Projects }} {{ range $index, $data := .Projects }}
+						<div class="col-sm-4 col-lg-3 mb-3">
+							<div class="card border-0 shadow-sm">
+								<img
+									src="{{ $data.Image }}"
+									class="card-img-top"
+									alt="images" />
+								<div class="card-body">
+									<a
+										class="text-decoration-none text-dark"
+										href="/detail/{{ $data.ID }}">
+										<h6 class="card-title">
+											{{ $data.ProjectName }}
+										</h6>
+									</a>
+									<span class="fs-xs">
+										Duration: {{ $data.Duration }}
 									</span>
+									<p class="card-text fs-sm">
+										{{ printf "%.120s" $data.Description }} ...
+									</p>
+									<div class="mb-3 d-flex gap-3">
+										{{ range $index, $data := $data.Technologies
+										}}
+										<span class="icon">
+											<img
+												src="/public/img/{{ $data }}.svg"
+												alt="Icon"
+												width="20"
+												height="20" />
+										</span>
+										{{ end }}
+									</div>
+	
+									{{ if $.Data.IsLogin }}
+									<div class="row flex-wrap">
+										<div class="col-6">
+											<a
+												href="/edit/{{ $data.ID }}"
+												class="btn btn-sm btn-dark w-100"
+												>Edit</a
+											>
+										</div>
+										<div class="col-6">
+											<a
+												href="/delete/{{ $data.ID }}"
+												class="btn btn-sm btn-dark w-100"
+												>Delete</a
+											>
+										</div>
+									</div>
 									{{ end }}
 								</div>
-
-								{{ if $.Data.IsLogin }}
-								<div class="row flex-wrap">
-									<div class="col-6">
-										<a
-											href="/edit/{{ $data.ID }}"
-											class="btn btn-sm btn-primary w-100"
-											>Edit</a
-										>
-									</div>
-									<div class="col-6">
-										<a
-											href="/delete/{{ $data.ID }}"
-											class="btn btn-sm btn-danger w-100"
-											>Delete</a
-										>
-									</div>
-								</div>
-								{{ end }}
 							</div>
 						</div>
+						{{ end }} {{ else }}
+						<p>
+							No Project Here. {{if (ne .Data.IsLogin true) }}Login <a href="/login">[here]</a> to see your Project. {{ end }} {{if .Data.IsLogin }} Add New in
+							<a href="/create">[here]</a> {{ end }}
+						</p>
+						{{ end }}
 					</div>
-					{{ end }} {{ else }}
-					<p>
-						No Project Here. Login <a href="/login">[here]</a> to see your Project. {{if .Data.IsLogin }} Add New in
-						<a href="/create">[here]</a> {{ end }}
-					</p>
-					{{ end }}
 				</div>
 			</div>
 		</main>
 		<!-- Footer -->
-		<footer class="border-top">
+		<footer class="border-top bg-white">
 			<p class="text-center m-0 py-3 fs-sm">
 				&copy; 2022. Jaka Sianturi. Made with [love] in Jakarta,
 				Indonesia.
