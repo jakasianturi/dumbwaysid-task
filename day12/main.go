@@ -223,7 +223,7 @@ func storeProject(w http.ResponseWriter, r *http.Request) {
 		Data.IsLogin = session.Values["IsLogin"].(bool)
 		Data.UserName = session.Values["Name"].(string)
 	}
-	fmt.Println(Data.Id)
+	// fmt.Println(Data.Id)
 
 	user_id := session.Values["Id"].(int)
 
@@ -252,7 +252,7 @@ func detailProject(w http.ResponseWriter, r *http.Request) {
 	var resultData = Project{}
 
 	err = config.Conn.QueryRow(context.Background(), "SELECT * FROM tb_projects WHERE id=$1", id).Scan(
-		&resultData.ID, &resultData.ProjectName, &resultData.StartDate, &resultData.EndDate, &resultData.Technologies, &resultData.Description, &resultData.Image,
+		&resultData.ID, &resultData.ProjectName, &resultData.StartDate, &resultData.EndDate, &resultData.Technologies, &resultData.Description, &resultData.Image, &resultData.UserId,
 	)
 	// add Duration result from calc of StartDate and EndDate
 	resultData.Duration = config.GetDurationTime(resultData.StartDate, resultData.EndDate)
@@ -501,7 +501,7 @@ func logout(w http.ResponseWriter, r *http.Request) {
 
 	session.Save(r, w)
 
-	fmt.Println("Logout")
+	// fmt.Println("Logout")
 
 	http.Redirect(w, r, "/", http.StatusSeeOther)
 }
